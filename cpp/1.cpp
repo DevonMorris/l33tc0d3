@@ -1,3 +1,6 @@
+// Objective: find two numbers that sum to target
+// Key: use hashmap to keep track of values indices
+// do subtraction to find complementary value
 class Solution {
  public:
   vector<int> twoSum(vector<int>& nums, int target)
