@@ -1,3 +1,4 @@
+// My solution
 class Solution {
   public:
     int hammingWeight(uint32_t n) {
@@ -11,5 +12,13 @@ class Solution {
         }
       }
       return hamming_dist;
+    }
+};
+
+// The cleanest (but cheating) solution
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        return __builtin_popcount(n);
     }
 };
