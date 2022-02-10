@@ -17,4 +17,20 @@ class Solution {
       }
       return max_profit;
     }
-}
+};
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (prices.empty()) {
+            return 0;
+        }
+        int min_price = prices.front();
+        int max_profit = 0;
+        for (const auto& price : prices) {
+            min_price = std::min(min_price, price);
+            max_profit = std::max(price - min_price, max_profit);
+        }
+        return max_profit;
+    }
+};
