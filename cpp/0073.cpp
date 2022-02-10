@@ -92,3 +92,32 @@ class Solution {
       }
     }
 };
+
+// this is the more clear solution imo
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        std::unordered_set<int> zero_rows{};
+        std::unordered_set<int> zero_columns{};
+
+        for (int i = 0; i < matrix.size(); ++i) {
+            for (int j = 0; j < matrix[i].size(); ++j) {
+                if (matrix[i][j] == 0) {
+                    zero_rows.emplace(i);
+                    zero_columns.emplace(j);
+                }
+            }
+        }
+        for (int i = 0; i < matrix.size(); ++i) {
+            for (int j = 0; j < matrix[i].size(); ++j) {
+                if (zero_rows.find(i) != zero_rows.end()) {
+                    matrix[i][j] = 0;
+                }
+                if (zero_columns.find(j) != zero_columns.end()) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        return;
+    }
+};
