@@ -42,3 +42,23 @@ public:
     return max_substring_length;
   }
 };
+
+// Feb 2022
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int max_length = 0;
+        int i = 0;
+        std::unordered_set<char> char_in_window;
+        for (int j = 0; j < s.size(); ++j) {
+            while (char_in_window.find(s[j]) != char_in_window.end()) {
+                auto it = char_in_window.find(s[i]);
+                char_in_window.erase(it);
+                ++i;
+            }
+            char_in_window.emplace(s[j]);
+            max_length = std::max(max_length, static_cast<int>(char_in_window.size()));
+        }
+        return max_length;
+    }
+};
